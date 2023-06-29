@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: wordpress
-        image: wordpress:latest
+        image: neroxxpips/webapp:latest
         ports:
         - containerPort: 80
 
