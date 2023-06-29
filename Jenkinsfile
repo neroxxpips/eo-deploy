@@ -17,7 +17,7 @@ pipeline {
                 NAMESPACE = 'nginx'
             }
             steps {
-                withAWS(credentials: 'aws-credentials', region: $AWS_REGION) {
+                withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
                     script {
                         sh('aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region $AWS_REGION')
                         sh "kubectl create namespaces $NAMESPACE"
