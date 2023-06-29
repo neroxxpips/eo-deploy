@@ -21,8 +21,8 @@ pipeline {
                 withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
                     script {
                         sh('aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region $AWS_REGION')
-                        sh "kubectl create namespace $NAMESPACE"
-                        sh "kubectl create namespace $NAMESPACE2"
+                        sh 'kubectl apply -f ci/ns.yaml'
+                        sh 'kubectl apply -f deploy/ns.yaml'
                         sh "kubectl apply -f ci/deployment.yaml -f ci/service.yaml -n $NAMESPACE"
                         sh "kubectl apply -f deploy/deployment.yaml -f deploy/service.yaml -n $NAMESPACE2"
                     }
